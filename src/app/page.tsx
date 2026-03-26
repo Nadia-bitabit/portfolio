@@ -1,13 +1,10 @@
 "use client";
 
 import React, { useState, useCallback } from 'react';
-import { Scene } from '@/components/three/Scene';
-import { Navbar } from '@/components/ui/Navbar';
-import { Hero } from '@/components/sections/Hero';
-import { Skills } from '@/components/sections/Skills';
-import { Projects } from '@/components/sections/Projects';
+import { Scene, Navbar, Hero, Skills, Projects } from '@/components';
 import { skills, projects } from '@/data/portfolio';
 import { TabType } from '@/types';
+import { COLORS } from '@/config';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabType>('home');
@@ -34,7 +31,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full font-sans text-gray-800 overflow-x-hidden selection:bg-pink-100" style={{ backgroundColor: '#f1b2c7ff' }}>
+    <div 
+      className="min-h-screen w-full font-sans text-gray-800 overflow-x-hidden selection:bg-pink-100" 
+      style={{ backgroundColor: COLORS.background }}
+    >
       <Scene className="fixed inset-0 z-0" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-3 md:px-6 py-6 md:py-8">

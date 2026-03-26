@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import { TabType } from '@/types';
 import { navItems, socialLinks } from '@/data/portfolio';
-import { Github, Linkedin, External } from '@/components/Icons';
+import { Github, Linkedin } from '@/components/Icons';
+import { COLORS } from '@/config';
 
 interface NavbarProps {
   activeTab: TabType;
