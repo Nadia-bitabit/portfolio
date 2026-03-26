@@ -4,49 +4,103 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
-# Portfolio Nadia Lopez - Configuration
+# Portfolio Nadia Lopez - Documentación del Proyecto
+
+## Historial de Cambios
+
+### v2.0.0 - Refactorización con Mejores Prácticas React (2026-03-25)
+**Cambios realizados:**
+- Arquitectura de componentes separada en carpetas
+- Tipos TypeScript centralizados en `src/types/index.ts`
+- Datos separados en `src/data/portfolio.ts`
+- Componentes reutilizables con props interfaces
+- useCallback para handlers de eventos
+- Export nombrados y default para cada componente
+
+### v1.0.0 - Versión Inicial (2026-03-25)
+- Portfolio básico con Three.js
+- Figuras 3D doradas flotantes
+- Secciones: Home, Skills, Projects
+- Deploy configured para GitHub Pages
+
+---
 
 ## Tech Stack
 - Next.js 16.2.1 (App Router)
 - TypeScript
 - TailwindCSS
-- Framer Motion (animaciones)
 - Three.js + @react-three/fiber + @react-three/drei (3D)
 
-## Color Palette
+## Paleta de Colores
 ```
---primary: #337357
---primary-light: #6D9F71
---accent-light: #FFDBE5
---accent: #EA9AB2
---accent-dark: #E27396
+--primary: #C9184A (Rosa fuerte)
+--primary-light: #FF4D6D
+--accent-light: #FFB3C1
+--accent: #FF758F
+--accent-dark: #FF8FA3
+--gold: #FFCC33 (Figuras 3D)
 ```
 
-## Design Principles (impeccable skill)
-- Usar la paleta de colores definida arriba
-- Animaciones fluidas con Framer Motion
-- Three.js para figuras geométricas en movimiento (fondo)
-- Responsive design, mobile-first
-- Espaciado consistente con el sistema de diseño
+## Skills Utilizadas
 
-## Project Structure
+### 1. React Three Fiber
+- **Uso:** Renderizado de figuras 3D en el fondo del portfolio
+- **Componentes:** Canvas, Float, PerspectiveCamera, ContactShadows, PresentationControls, Environment
+- **Material:** GoldMirrorMaterial con metalness=1, roughness=0.02
+
+### 2. React Best Practices
+- **Separación de responsabilidades:** Componentes UI separados de lógica de negocio
+- **Tipado fuerte:** Interfaces para todas las props
+- **Hooks:** useState, useCallback, useMemo
+- **Composición:** Componentes pequeños y reutilizables
+
+### 3. Component Architecture
 ```
 src/
 ├── app/
-│   ├── page.tsx        # Página principal
-│   ├── layout.tsx      # Layout global
-│   ├── globals.css    # Estilos y variables
-│   └── fonts/          # Fuentes personalizadas
-└── components/
-    └── ThreeDBackground.tsx  # Figuras 3D animadas
+│   ├── page.tsx              # Página principal (composite)
+│   ├── layout.tsx            # Layout global
+│   └── globals.css           # Estilos y variables CSS
+├── components/
+│   ├── Icons.tsx             # Iconos SVG reutilizables
+│   ├── three/
+│   │   ├── FloatingShapes.tsx # Figuras 3D animadas
+│   │   └── Scene.tsx         # Escena Three.js completa
+│   ├── ui/
+│   │   └── Navbar.tsx        # Navegación del sitio
+│   └── sections/
+│       ├── Hero.tsx          # Sección de inicio
+│       ├── Skills.tsx        # Sección de habilidades
+│       └── Projects.tsx      # Sección de proyectos
+├── data/
+│   └── portfolio.ts          # Datos estáticos (skills, proyectos)
+└── types/
+    └── index.ts              # Interfaces y tipos TypeScript
 ```
+
+### 4. Git & GitHub Workflow
+- Rama `main`: Producción (build para GitHub Pages)
+- Rama `dev`: Desarrollo (features y refactors)
+- GitHub Actions para deploy automático
+
+---
+
+## Design Principles
+- UI con colores roses/pastel (#C9184A a #FFB3C1)
+- Figuras 3D doradas con efecto espejo
+- Responsive design, mobile-first
+- Animaciones suaves con Float de drei
 
 ## Commands
 - `npm run dev` - Iniciar desarrollo
-- `npm run build` - Build producción
+- `npm run build` - Build producción (static export)
 - `npm run lint` - Verificar código
 
 ## Dependencies
 - three, @react-three/fiber, @react-three/drei
-- framer-motion
 - @types/three
+
+## GitHub Pages Config
+- Output: `export` en next.config.ts
+- Workflow: `.github/workflows/deploy.yml`
+- Rama: `dev` triggers deployment
