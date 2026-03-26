@@ -34,7 +34,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full font-sans text-gray-800 overflow-x-hidden selection:bg-pink-100" style={{ backgroundColor: '#fff9fb' }}>
+    <div className="min-h-screen w-full font-sans text-gray-800 overflow-x-hidden selection:bg-pink-100" style={{ backgroundColor: '#f1b2c7ff' }}>
       <Scene className="fixed inset-0 z-0" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-8">
