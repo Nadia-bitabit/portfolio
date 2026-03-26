@@ -8,6 +8,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Historial de Cambios
 
+### v3.0.0 - React Structure Skill (2026-03-26)
+**Cambios realizados:**
+- Barrel exports (index.ts) para todos los módulos de componentes
+- Carpeta `config/` con constantes centralizadas (COLORS, SOCIAL_LINKS, etc.)
+- Imports limpios usando `@/components`, `@/config`
+- Aplicación de mejores prácticas de estructura React
+
 ### v2.0.0 - Refactorización con Mejores Prácticas React (2026-03-25)
 **Cambios realizados:**
 - Arquitectura de componentes separada en carpetas
@@ -62,16 +69,22 @@ src/
 │   ├── layout.tsx            # Layout global
 │   └── globals.css           # Estilos y variables CSS
 ├── components/
+│   ├── index.ts              # Barrel exports
 │   ├── Icons.tsx             # Iconos SVG reutilizables
 │   ├── three/
+│   │   ├── index.ts          # Barrel exports
 │   │   ├── FloatingShapes.tsx # Figuras 3D animadas
 │   │   └── Scene.tsx         # Escena Three.js completa
 │   ├── ui/
+│   │   ├── index.ts          # Barrel exports
 │   │   └── Navbar.tsx        # Navegación del sitio
 │   └── sections/
+│       ├── index.ts          # Barrel exports
 │       ├── Hero.tsx          # Sección de inicio
 │       ├── Skills.tsx        # Sección de habilidades
 │       └── Projects.tsx      # Sección de proyectos
+├── config/
+│   └── index.ts              # Constantes centralizadas
 ├── data/
 │   └── portfolio.ts          # Datos estáticos (skills, proyectos)
 └── types/
@@ -82,6 +95,13 @@ src/
 - Rama `main`: Producción (build para GitHub Pages)
 - Rama `dev`: Desarrollo (features y refactors)
 - GitHub Actions para deploy automático
+
+### 5. React Structure Skill
+- **Barrel exports:** Archivos `index.ts` para exports limpios
+- **Config centralizada:** Constantes en `src/config/`
+- **Separación de responsabilidades:** Cada carpeta con propósito específico
+- **Tipado fuerte:** TypeScript interfaces en `src/types/`
+- **Imports absolutos:** Uso de alias `@/` para rutas limpias
 
 ---
 
